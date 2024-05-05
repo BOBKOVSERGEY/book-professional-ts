@@ -1,3 +1,5 @@
+# page
+60
 # init
 npm install --save-dev typescript tslint @types/node
 
@@ -15,5 +17,9 @@ tsc or ./node_modules/.bin/tsc
 
 # run code
 node ./dist/index.js
+
+# links
+https://www.npmjs.com/package/ts-node
+https://github.com/Microsoft/TypeScript-Node-Starter
 
 
