@@ -34,6 +34,34 @@ class King extends Piece {
 }
 let set = new Set;
 set.add(1).add(2).add(3);
-console.log(set.has(2)); // верно
+set.has(2); // верно
 set.has(4); // неверно
+class Cat {
+    constructor(name) {
+        this.name = name;
+    }
+    eat(food) {
+    }
+    meow() {
+    }
+    sleep(hours) {
+    }
+}
+class Zebra {
+    trot() {
+        // ...
+    }
+}
+class Poodle {
+    trot() {
+        // ...
+    }
+}
+function ambleAround(animal) {
+    animal.trot();
+}
+let zebra = new Zebra;
+let poodle = new Poodle;
+ambleAround(zebra); // OK
+ambleAround(poodle); // OK
 //# sourceMappingURL=index.js.map

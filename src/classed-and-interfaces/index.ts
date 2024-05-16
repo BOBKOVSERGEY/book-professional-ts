@@ -76,3 +76,96 @@ interface Sushi extends Food {
 interface Cake extends Food {
     sweet: boolean
 }
+
+interface Animal {
+    readonly name: string
+    eat(food: string): void
+    sleep(hours: number): void
+}
+
+interface Feline {
+    meow(): void
+}
+
+class Cat implements Animal, Feline {
+    readonly name: string;
+
+    constructor(name: string) {
+        this.name = name
+    }
+
+    eat(food: string): void {
+    }
+
+    meow(): void {
+    }
+
+    sleep(hours: number): void {
+    }
+
+}
+
+class Zebra {
+    trot() {
+        // ...
+    }
+}
+class Poodle {
+    trot() {
+        // ...
+    }
+}
+
+function ambleAround(animal: Zebra) {
+    animal.trot()
+}
+
+let zebra = new Zebra
+let poodle = new Poodle
+
+ambleAround(zebra) // OK
+ambleAround(poodle) // OK
+
+type State = {
+    [key: string]: string
+}
+
+interface StringDatabase {
+    state: State
+    get(key: string): string | null
+    set(key: string, value: string): void
+}
+
+interface StringDatabaseConstructor {
+    new(): StringDatabase
+    from(state: State): StringDatabase
+}
+
+class StringDatabase {
+    state: State = {}
+
+
+    get(key: string): string | null {
+        return key in this.state ? this.state[key] : null
+    }
+    set(key: string, value: string): void {
+        this.state[key] = value
+    }
+
+    static from(state: State) {
+        let db = new StringDatabase
+        for (let key in state) {
+            db.set(key, state[key])
+        }
+        return db
+    }
+}
+
+
+interface MyMap<K, V> {
+    get(key: K): V
+    set(key: K, value: V): void
+}
+
+//let a = new MyMap<string, number>('k', 1) // MyMap<string, number>
+//let b = new MyMap('k', true) // MyMap<string, boolean>
